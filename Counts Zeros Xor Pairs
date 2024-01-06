@@ -1,0 +1,30 @@
+#User function Template for python3
+
+
+def calculate (arr, n) : 
+    #Complete the function
+    s=0
+    a=list(set(arr))
+    for i in range(len(a)):
+        c=arr.count(a[i])
+        if c>1:
+            s+=c*(c-1)//2
+
+    return s
+
+
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+for _ in range(0,int(input())):
+    
+    n = int(input())
+    arr = list(map(int,input().strip().split()))
+    res = calculate(arr, n)
+    print(res)
+
+
+# } Driver Code Ends
