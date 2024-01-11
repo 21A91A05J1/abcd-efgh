@@ -1,0 +1,53 @@
+class Solution {
+public String[] sortPeople(String[] names, int[] heights) {
+quickSort(names, heights, 0, heights.length-1);
+return names;
+}
+
+private static void quickSort(String[] names, int[] heights, int lowerBound, int upperBound) {
+    if(lowerBound < upperBound) {
+        int pivotIndex = partition(names, heights, lowerBound, upperBound);
+        quickSort(names, heights, lowerBound, pivotIndex-1);
+        quickSort(names, heights, pivotIndex+1, upperBound);
+    }
+}
+
+private static int partition(String[] names, int[] heights, int lowerBound, int upperBound) {
+
+    int pivot = heights[lowerBound];
+    int start = lowerBound;
+    int end = upperBound;
+
+    while(start < end) {
+
+        while (heights[start] >= pivot && start < end) {
+            start++;
+        }
+
+        while (heights[end] < pivot) {
+            end--;
+        }
+
+        if(start < end) {
+            swap(heights, start, end);
+            swap(names, start, end);
+        }
+    }
+
+    swap(heights, lowerBound, end);
+    swap(names, lowerBound, end);
+    return end;
+}
+
+private static void swap(int[] array, int i, int j) {
+    int temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+}
+
+private static void swap(String[] array, int i, int j) {
+    String temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+}
+} 
